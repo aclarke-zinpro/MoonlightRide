@@ -1,0 +1,12 @@
+node_modules/
+.next/
+coverage/
+.e2e/
+.pglite/
+playwright-report/
+test-results/
+package-lock.json
+src/server/db/migrations/
+specs/
+.specify/
+.claude/

@@ -1,0 +1,128 @@
+@import "tailwindcss";
+
+/* Design tokens from the 2026 info sheet (research.md R10). */
+@theme {
+  --color-night: #0d0f12;
+  --color-surface: #171a1f;
+  --color-surface-2: #20242b;
+  --color-line: #2e333b;
+  --color-text: #ece8e1;
+  --color-muted: #a9a39a;
+  --color-accent: #d9772b;
+  --color-accent-strong: #e8893d;
+  --color-danger: #ff8a7a;
+  --color-success: #8fd19e;
+  --font-serif: var(--font-playfair), Georgia, "Times New Roman", serif;
+  --font-sans: var(--font-inter), system-ui, -apple-system, "Segoe UI", sans-serif;
+}
+
+@layer base {
+  :root {
+    color-scheme: dark;
+  }
+
+  html {
+    background: var(--color-night);
+  }
+
+  body {
+    background: var(--color-night);
+    color: var(--color-text);
+    font-family: var(--font-sans);
+    line-height: 1.6;
+  }
+
+  h1,
+  h2,
+  h3 {
+    font-family: var(--font-serif);
+    color: var(--color-accent);
+    line-height: 1.15;
+  }
+
+  /* Links are underlined so they never rely on color alone (WCAG 1.4.1). */
+  a {
+    color: var(--color-accent-strong);
+    text-decoration: underline;
+    text-underline-offset: 3px;
+  }
+
+  a:hover {
+    color: var(--color-text);
+  }
+
+  :focus-visible {
+    outline: 3px solid var(--color-accent-strong);
+    outline-offset: 3px;
+    border-radius: 2px;
+  }
+}
+
+.sr-only-focusable:not(:focus) {
+  position: absolute;
+  width: 1px;
+  height: 1px;
+  overflow: hidden;
+  clip: rect(0 0 0 0);
+  white-space: nowrap;
+}
+
+/* Rendered Markdown (posts, ride text). */
+.prose-night p,
+.prose-night ul,
+.prose-night ol {
+  margin-block: 0.75rem;
+}
+.prose-night ul {
+  list-style: disc;
+  padding-left: 1.5rem;
+}
+.prose-night ol {
+  list-style: decimal;
+  padding-left: 1.5rem;
+}
+.prose-night li {
+  margin-block: 0.35rem;
+}
+.prose-night h2 {
+  font-size: 1.5rem;
+  margin-top: 1.75rem;
+}
+.prose-night h3 {
+  font-size: 1.25rem;
+  margin-top: 1.25rem;
+}
+.prose-night strong {
+  color: var(--color-text);
+  font-weight: 700;
+}
+.prose-night blockquote {
+  border-left: 3px solid var(--color-accent);
+  padding-left: 1rem;
+  color: var(--color-muted);
+}
+.prose-night img {
+  border-radius: 0.5rem;
+}
+
+/* The moon in the hero. */
+.moon {
+  background: radial-gradient(circle at 40% 38%, #f4f1ea 0%, #d9d4c8 45%, #b9b3a6 70%, #8f8a80 100%);
+  box-shadow:
+    0 0 60px 20px rgb(244 241 234 / 0.18),
+    0 0 140px 60px rgb(244 241 234 / 0.08);
+}
+
+.night-sky {
+  background:
+    radial-gradient(ellipse at 50% 10%, rgb(255 255 255 / 0.06), transparent 60%),
+    linear-gradient(180deg, #050608 0%, #0d0f12 70%);
+}
+
+@media (prefers-reduced-motion: reduce) {
+  * {
+    animation: none !important;
+    transition: none !important;
+    scroll-behavior: auto !important;
+  }
+}
